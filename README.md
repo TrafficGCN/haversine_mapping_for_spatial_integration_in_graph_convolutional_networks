@@ -109,9 +109,9 @@ Given a traffic sensor
 and a set of weather sensors
 ![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DW=%7BW_1,W_2,%5Cdots,W_n%7D)
 
-, the nearest weather sensor w_k is
+, the nearest weather sensor W_k is
 
-![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DW_k=%5Cunderset%7Bi%7D%7B%5Ctext%7Bargmin%7D%7D%7B%5Ctext%7Bhaversine%7D(%5Ctext%7Blat%7D_T,%5Ctext%7Blon%7D_T,%5Ctext%7Blat%7D_%7BW_i%7D,%5Ctext%7Blon%7D_%7BW_i%7D)%7D)
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DW_k=%5Cunderset%7Bi%7D%7B%5Ctext%7Bargmin%7D%7D%5C{%7B%5Ctext%7Bhaversine%7D(%5Ctext%7Blat%7D_T,%5Ctext%7Blon%7D_T,%5Ctext%7Blat%7D_%7BW_i%7D,%5Ctext%7Blon%7D_%7BW_i%7D)%5C}%7D)
 
 ```
 def find_nearest_weather_sensor(traffic_lat, traffic_lon, weather_df):
