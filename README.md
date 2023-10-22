@@ -25,8 +25,6 @@ Now you just need to forwards fill the nan values and normalize the data for T-G
 <img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/5b846c74-7bdb-4962-b00b-1451dccab64c" width="48%">
 <img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/4b71cec2-e95e-43d4-b798-3969dfc8956d" width="48%">
 <br />
-<br />
-<br />
 Traffic sensors are computed to the nearest weather sensor for the pems-bay and metr-la datasets.
 
 ### Repo Structure
