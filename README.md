@@ -73,13 +73,15 @@ import os
 
 ### Code
 
+The Haversine formula calculates the shortest distance between two points on the surface of a sphere, given their longitudes and latitudes.
+
 Given two points:
 
-![Screenshot 2023-10-22 at 02 12 17](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_1,%5Ctext%7Blon%7D_1)%5Ctext%7B)
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_1,%5Ctext%7Blon%7D_1)%5Ctext%7B)
 
 and
 
-![Screenshot 2023-10-22 at 02 12 17](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_2,%5Ctext%7Blon%7D_2)%5Ctext%7B)
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_2,%5Ctext%7Blon%7D_2)%5Ctext%7B)
 
 The Haversine formula is:
 
@@ -97,9 +99,21 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * np.arcsin(np.sqrt(a)) 
     r = 6371  # Radius of Earth in kilometers
     return c * r
+```
+To find the nearest weather sensor for a given traffic sensor, we calculate the distance between the traffic sensor and each weather sensor using the Haversine formula. The weather sensor with the smallest distance is considered the nearest.
 
+Given a traffic sensor 
 
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DT(%5Ctext%7Blat%7D_T,%5Ctext%7Blon%7D_T))
 
+and a set of weather sensors
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DW=%7BW_1,W_2,%5Cdots,W_n%7D)
+
+, the nearest weather sensor w_k is
+
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DW_k=%5Cunderset%7Bi%7D%7B%5Ctext%7Bargmin%7D%7D%7B%5Ctext%7Bhaversine%7D(%5Ctext%7Blat%7D_T,%5Ctext%7Blon%7D_T,%5Ctext%7Blat%7D_%7BW_i%7D,%5Ctext%7Blon%7D_%7BW_i%7D)%7D)
+
+```
 def find_nearest_weather_sensor(traffic_lat, traffic_lon, weather_df):
     distances = weather_df.apply(lambda row: haversine(traffic_lat, traffic_lon, row['lat'], row['long']), axis=1)
     return weather_df.iloc[distances.idxmin()]['detid']
@@ -109,7 +123,14 @@ traffic_sensors_df['nearest_weather_sensor'] = traffic_sensors_df.apply(
     lambda row: find_nearest_weather_sensor(row['lat'], row['long'], weather_sensors_df),
     axis=1
 )
+```
+Using the above method, each traffic sensor is mapped to its nearest weather sensor. This results in a dictionary where the keys are traffic sensor IDs and the values are the corresponding nearest weather sensor IDs.
 
+![formula](https://latex.codecogs.com/png.latex?\dpi{150}M:\text{Traffic%20Sensor%20ID}\rightarrow\text{Weather%20Sensor%20ID})
+
+Where <i>M</i> is the mapping function.
+
+```
 # Dictionary mapping of traffic sensor to its nearest weather sensor
 sensor_to_weather_mapping = dict(zip(traffic_sensors_df['detid'], traffic_sensors_df['nearest_weather_sensor']))
 
