@@ -73,6 +73,20 @@ import os
 
 ### Code
 
+Given two points:
+
+![Screenshot 2023-10-22 at 02 12 17](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_1,%5Ctext%7Blon%7D_1)%5Ctext%7B)
+
+and
+
+![Screenshot 2023-10-22 at 02 12 17](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_2,%5Ctext%7Blon%7D_2)%5Ctext%7B)
+
+The Haversine formula is:
+
+<img src="https://latex.codecogs.com/png.latex?\dpi{150}\begin{align*}a&=\sin^2\left(\frac{\Delta\text{lat}}{2}\right)+\cos(\text{lat}_1)\cdot\cos(\text{lat}_2)\cdot\sin^2\left(\frac{\Delta\text{lon}}{2}\right)\\c&=2\cdot\text{arcsin}\left(\sqrt{a}\right)\\d&=r\cdot%20c\end{align*}" />
+
+<i>r</i> is the radius of the Earth (approximately 6371 kilometers).
+
 ```
 # Haversine formula to calculate the distance between two geographical points
 def haversine(lat1, lon1, lat2, lon2):
@@ -83,6 +97,8 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * np.arcsin(np.sqrt(a)) 
     r = 6371  # Radius of Earth in kilometers
     return c * r
+
+
 
 def find_nearest_weather_sensor(traffic_lat, traffic_lon, weather_df):
     distances = weather_df.apply(lambda row: haversine(traffic_lat, traffic_lon, row['lat'], row['long']), axis=1)
