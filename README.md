@@ -22,7 +22,12 @@ DATETIMESTAMP,773869_speed,767541_speed,767542_speed, ... ,773869_temp,767541_te
 ```
 Now you just need to forwards fill the nan values and normalize the data for T-GCN model and feed it in.
 
-
+<img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/5b846c74-7bdb-4962-b00b-1451dccab64c" width="48%" align="right">
+<img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/4b71cec2-e95e-43d4-b798-3969dfc8956d" width="48%" align="right">
+<br />
+<br />
+<br />
+Traffic sensors are computed to the nearest weather sensor for the pems-bay and metr-la datasets.
 
 ### Repo Structure
 
