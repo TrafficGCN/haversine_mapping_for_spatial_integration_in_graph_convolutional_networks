@@ -133,5 +133,31 @@ Where <i>M</i> is the mapping function.
 ```
 # Dictionary mapping of traffic sensor to its nearest weather sensor
 sensor_to_weather_mapping = dict(zip(traffic_sensors_df['detid'], traffic_sensors_df['nearest_weather_sensor']))
+```
 
+The traffic and tempurature are matched via the date timestamps and saved into one csv file. `spatial_integration_haversine_mapping.py`
+
+```
+# Function to merge data based on timestamps
+def merge_data_on_timestamps(traffic_speed_df, air_temp_df, sensor_to_weather_mapping):
+    # Initialize merged dataframe with DATETIMESTAMP column
+    merged_df = pd.DataFrame()
+    merged_df["DATETIMESTAMP"] = traffic_speed_df["DATETIMESTAMP"]
+    
+    # Iterate through each sensor in the traffic_speed_df
+    for sensor in traffic_speed_df.columns[1:]:
+        # Copy the speed data
+        merged_df[sensor] = traffic_speed_df[sensor]
+        
+        # Find corresponding weather sensor
+        weather_sensor = sensor_to_weather_mapping[int(sensor)]
+        
+        # Find corresponding temperature data
+        if f"{weather_sensor}" in air_temp_df.columns:
+            merged_df[f"{sensor}_temp"] = air_temp_df[f"{weather_sensor}"].reindex_like(traffic_speed_df)
+    
+    return merged_df
+...
+
+merged_df.to_csv(merged_file_path, index=False)
 ```
