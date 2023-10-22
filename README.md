@@ -135,7 +135,7 @@ Where <i>M</i> is the mapping function.
 sensor_to_weather_mapping = dict(zip(traffic_sensors_df['detid'], traffic_sensors_df['nearest_weather_sensor']))
 ```
 
-The traffic and tempurature are matched via the date timestamps and saved into one csv file. `spatial_integration_haversine_mapping.py`
+The traffic and temperature are matched via the date timestamps and saved into one csv file. `spatial_integration_haversine_mapping.py`
 
 ```
 # Function to merge data based on timestamps
