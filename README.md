@@ -81,7 +81,7 @@ Given two points:
 
 and
 
-![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_1(%5Ctext%7Blat%7D_2,%5Ctext%7Blon%7D_2)%5Ctext%7B)
+![formula](https://latex.codecogs.com/png.latex?%5Cdpi%7B150%7DP_2(%5Ctext%7Blat%7D_2,%5Ctext%7Blon%7D_2)%5Ctext%7B)
 
 The Haversine formula is:
 
