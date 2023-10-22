@@ -20,7 +20,7 @@ merged_speed_traffic_and_air_temperature_data.csv
 DATETIMESTAMP,773869_speed,767541_speed,767542_speed, ... ,773869_temp,767541_temp,767542_temp
 2012-03-01 00:00:00,64.375,67.625,67.125,61.5,66.875, ... ,nan, 51.8, 51.8
 ```
-Now you just need to forwards fill the nan values and normalize the data for T-GCN model and feed it in.
+Now you just need to forwards fill the nan values and normalize the data for a T-GCN model and feed it in.
 
 <img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/5b846c74-7bdb-4962-b00b-1451dccab64c" width="48%">
 <img src="https://github.com/ThomasAFink/haversine_mapping_for_spatial_integration_in_graph_convolutional_networks/assets/53316058/4b71cec2-e95e-43d4-b798-3969dfc8956d" width="48%">
