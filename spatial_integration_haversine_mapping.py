@@ -76,6 +76,8 @@ merged_df = merge_data_on_timestamps(traffic_speed_df, air_temp_df, sensor_to_we
 merged_df = reorder_columns(merged_df)
 merged_df = rename_speed_columns(merged_df)
 
+# Forward fill and then backward fill NaN values
+merged_df = merged_df.fillna(method='ffill').fillna(method='bfill')
 
 # Save the merged dataframe to a CSV file
 output_folder = os.path.join(OS_PATH, 'output/metr-la')
